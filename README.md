@@ -162,112 +162,36 @@ main <- function() {
 main()
 ```
 
-### 模型比較二：隨機森林
-```R
-#載入必要模型
-library(tidyverse)
-library(caret)
-library(ggplot2)
-library(readr)
-library(randomForest)
-library(dplyr)
-
-x_train <- read.csv("Data/X_train_lda.csv")
-x_test <-read.csv("Data/X_test_lda.csv")
-y_train <- read.csv("Data/y_train.csv")
-y_test <- read.csv("Data/y_test.csv")
-
-y_train <- y_train$x
-y_train <- as.factor(y_train)
-y_test <- y_test$x
-
-#print(sum(is.na(x_train)))
-#print(sum(is.na(y_train)))
-#print(sum(is.na(x_test)))
-#print(sum(is.na(y_test)))
-
-trees <- seq(1, 200)
-mtry <- seq(1, 50, by=10)
-
-err <- numeric(length(trees))
-acc <- numeric(length(trees))
-results <- list()
-
-set.seed(123)
-for (tree in trees) {
-  
-  for (try in mtry) {
-    
-    model <- randomForest(x_train, y_train, ntree=tree, mtry=try, proximity=TRUE)
-    
-    # 計算錯誤率
-    err_rate <- model$err.rate[length(model$err.rate)]
-    #err[tree] <- model$err.rate[length(model$err.rate)]
-    
-    # 計算 accuracy
-    predictions <- predict(model, x_test)
-    acc[try] <- mean(predictions == y_test)
-    
-    results[[length(results) + 1]] <- data.frame(tree=tree, try=try, accuracy=acc[try])
-
-      }
-  
-}
-
-results_df <- bind_rows(results)
-# min_oob <- min(results_df$error_rate)
-max_acc <- max(results_df$accuracy)
-
-# best tree = 8, best mtry = 31
-final_model <- randomForest(x_train, y_train, ntree=8, mtry = 31)
-prediction <- predict(final_model, x_test, type = "prob") 
-
-# 1: rain, 2: not rain, threshold = 0.3 0.4 0.5
-# If prob of 2(rain) > threshold, set as 2
-pred_class <- ifelse(prediction[, 2] >= 0.5, 2, 1)
-
-predictions <- as.data.frame(pred_class)
-colnames(predictions) <- c("Predicted class")
-
-y_test <- as.factor(y_test)
-predictions <- factor(pred_class, levels = levels(y_test))
-
-accuracy <- mean(predictions == y_test)
-
-cm <- confusionMatrix(predictions, y_test)
-recall <- cm$byClass["Sensitivity"]
-
-#根據不同ntree, mtry繪製正確率相關圖
-ggplot(results_df, aes(x=tree, y=accuracy, group=factor(try), color=factor(try))) +
-  geom_line() +
-  labs(title="Random Forest Accuracy by Number of Trees and Mtry",
-       x="Number of Trees",
-       y="Accuracy",
-       color="Mtry Value") +
-  theme_minimal() +
-  theme(plot.title = element_text(hjust = 0.5))
-```
 
 
 
 ### results
-* What is your performance?
-* Is the improvement significant?
+**Threshold 調整**
+- 為了提高降雨預測的可靠性並減少用戶未攜帶雨具的風險，我們將預測閾值從 0.5 調整到 0.4，此情況下被 label 成會下雨 的數量會增加（Predicted positive 增加）
+- 這樣可以減少 FN 的發生，增強模型檢測降雨的能力。
+同時，使用邏輯迴歸模型，因其簡單且穩定，更好地處理小數據集和噪音數據。
+**提升預測性能、處理複雜性**
+- 納入更多特徵：增加如雲量、風速變化、歷史降雨數據等特徵
+- 提供更豐富的資訊，有助於模型更準確地捕捉降雨的模式和規律。
+**延伸到多分類預測**：無雨、小雨、中雨、大雨及暴雨
+提供更具體的天氣預報，進一步提高模型的應用價值。
 
 ## References
-* Packages you use
-*   library(readxl)
-*   library(corrplot)
-*   library(ggplot2)
-*   library(dplyr)
-*   library(caret)
-*   library(skimr)
-*   library(moments)
-*   library(MASS)
-*   library(caTools)
-*   library(class)
-* Related publications
-* 蕭偉泓，2022，《應用卷積神經網路於雲影像降雨預測》，嶺東科技大學資訊管理系碩士班
-- Google最先進天氣模型MetNet-3，預測結果超越傳統數值預報模型(https://www.ithome.com.tw/news/136634)
-- Rain Prediction: ANN(https://www.kaggle.com/code/karnikakapoor/rain-prediction-ann)
-- 資料降維 — LDA 線性區別分析(https://medium.com/data-science-navigator/資料降維-lda-線性區別分析-b8adb3df0e01)
+### 套件
+本項目使用以下 R 語言套件進行數據分析和模型建構：
+1. `readxl`：用於讀取Excel文件。
+2. `corrplot`：生成變量間的相關性圖。
+3. `ggplot2`：用於創建複雜的圖表。
+4. `dplyr`：數據操縱工具，方便數據處理。
+5. `caret`：機器學習的數據分割、前處理、後驗分析等。
+6. `skimr`：提供快速而有用的數據概覽。
+7. `moments`：計算偏度和峰度等統計量。
+8. `MASS`：提供大量的統計技術，如線性和羅吉斯迴歸。
+9. `caTools`：數據分割、模型評估等工具。
+10. `class`：K 最近鄰算法的函數。
+
+### 參考文章與出版物 
+- 蕭偉泓（2022），《應用卷積神經網路於雲影像降雨預測》，嶺東科技大學資訊管理系碩士班。
+- Google最先進天氣模型MetNet-3，預測結果超越傳統數值預報模型，[詳細資料](https://www.ithome.com.tw/news/136634)。
+- Rain Prediction: ANN，[Kaggle連結](https://www.kaggle.com/code/karnikakapoor/rain-prediction-ann)。
+- 資料降維 — LDA 線性區別分析，[閱讀更多](https://medium.com/data-science-navigator/資料降維-lda-線性區別分析-b8adb3df0e01)。

@@ -6,17 +6,15 @@
 |-|-|-|-|
 |李承恩|資科大四|109703010|收集資料,資料前處理| 
 |楊榮瑜|哲學碩四|1091540054|EDA,特徵工程|
-|黃妍心|國貿大四|109301091|建模：Logistic Regression|
-|陳昊暄|風管大三|110207402|建模：XGBoost|
-|陳為政|教育大三|110102050|建模：RandomForest|
+|黃妍心|國貿大四|109301091|建模：Logistic Regression、海報製作|
+|陳昊暄|風管大三|110207402|建模：XGBoost、期末報告|
+|陳為政|教育大三|110102050|建模：RandomForest、期末報告|
 
 
 ## Folder organization and its related description
-* code
-
-
 ### docs
 ![images](DS第二組A1海報初版.png)
+presentation link: 
 
 ### data
 ** Source(https://codis.cwa.gov.tw/)
@@ -248,9 +246,6 @@ ggplot(results_df, aes(x=tree, y=accuracy, group=factor(try), color=factor(try))
   theme_minimal() +
   theme(plot.title = element_text(hjust = 0.5))
 ```
-#### 隨機森林尋找最佳超參數:
-![plot2](https://github.com/112-2-dataScience/finalproject-group2/assets/116884263/d84295e4-e6ff-4fe0-92e7-256b690fd983)
-
 
 ### 模型比較三：XGBoost
 ```R
@@ -319,18 +314,20 @@ best_model$params
 ```
 
 ### results
-<img width="420" alt="螢幕截圖 2024-06-10 13 19 35" src="https://github.com/112-2-dataScience/finalproject-group2/assets/116884263/3fdf6d5e-2f15-426c-91b6-fac31eb68441">
-
+#### 模型表現
+- 模型目標為達到最高的召回率，並最小化真實下雨但預測沒下雨（FN)的機率。可選擇 XGBoost 或 Logistic Regression，並將閾值設置為 0.3 或 0.4。
+#### 改進方向
 **Threshold 調整**
 - 為了提高降雨預測的可靠性並減少用戶未攜帶雨具的風險，我們將預測閾值從 0.5 調整到 0.4，此情況下被 label 成會下雨 的數量會增加（Predicted positive 增加）
 - 這樣可以減少 FN 的發生，增強模型檢測降雨的能力。
-同時，使用邏輯迴歸模型，因其簡單且穩定，更好地處理小數據集和噪音數據。
+- 同時，使用邏輯迴歸模型，因其簡單且穩定，更好地處理小數據集和噪音數據。
+
 **提升預測性能、處理複雜性**
 - 納入更多特徵：增加如雲量、風速變化、歷史降雨數據等特徵
 - 提供更豐富的資訊，有助於模型更準確地捕捉降雨的模式和規律。
+
 **延伸到多分類預測**：無雨、小雨、中雨、大雨及暴雨
 提供更具體的天氣預報，進一步提高模型的應用價值。
-
 
 ## References
 ### 套件
@@ -351,3 +348,4 @@ best_model$params
 - Google最先進天氣模型MetNet-3，預測結果超越傳統數值預報模型，[詳細資料](https://www.ithome.com.tw/news/136634)。
 - Rain Prediction: ANN，[Kaggle連結](https://www.kaggle.com/code/karnikakapoor/rain-prediction-ann)。
 - 資料降維 — LDA 線性區別分析，[閱讀更多](https://medium.com/data-science-navigator/資料降維-lda-線性區別分析-b8adb3df0e01)。
+

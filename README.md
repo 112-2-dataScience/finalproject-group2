@@ -32,28 +32,28 @@ idea by Noble WS (2009) [A Quick Guide to Organizing Computational Biology Proje
 
 ### code
 * Analysis steps:
-** EDA:
-***    確認資料類型
-***    確認標籤分布
-***    將非數值資料轉為數值型態
-***    確認偏度
-***    標準化
-***    確認數值範圍
-***    去除離群值
-***    計算相關係數與P-value
-***    降維:LDA與PCA
+* EDA:
+*    確認資料類型
+*    確認標籤分布
+*      將非數值資料轉為數值型態
+*    確認偏度
+*      標準化
+*      確認數值範圍
+*    去除離群值
+*    計算相關係數與P-value
+*    降維:LDA與PCA
 * Which method or package do you use?
-**  EDA:
-***   library(readxl)
-***   library(corrplot)
-***   library(ggplot2)
-***   library(dplyr)
-***   library(caret)
-***   library(skimr)
-***   library(moments)
-***   library(MASS)
-***   library(caTools)
-***   library(class)
+*  EDA:
+*   library(readxl)
+*   library(corrplot)
+*   library(ggplot2)
+*   library(dplyr)
+*   library(caret)
+*   library(skimr)
+*   library(moments)
+*   library(MASS)
+*   library(caTools)
+*   library(class)
 * How do you perform training and evaluation?
   * Cross-validation, or extra separated data
 * What is a null model for comparison?

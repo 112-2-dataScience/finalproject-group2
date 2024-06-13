@@ -162,7 +162,7 @@ main <- function() {
 main()
 ```
 
-###模型比較二：隨機森林
+### 模型比較二：隨機森林
 ```R
 #載入必要模型
 library(tidyverse)

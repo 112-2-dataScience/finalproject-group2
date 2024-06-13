@@ -14,20 +14,20 @@
 ## Folder organization and its related description
 ### docs
 ![images](DS第二組A1海報初版.png)
-presentation link: 
+### presentation link: 
 
-### data
+## data
 - Source(https://codis.cwa.gov.tw/)
 - Format:CSV
 - Size:1869筆
-**資料介紹**
+- **資料介紹**
 本次研究，我們從 CODiS 氣候資料服務系統抓取 2019/01 至 2024/04 的觀測資料。然而，我們未採用文山測站，而是選擇抓取位於中山區的台北測站資料，因其為署屬有人站，資料與前者相比豐富許多，更能滿足訓練之需求。我們採用前一天的資料如相對溼度、A 型蒸發量、雲量以預測當天的下雨情形，依降水量區分為無雨、小雨、中雨、大雨及暴雨，經遺失值清洗後共計為 1869 筆。
-**資料前處理**
-- 
+- **資料前處理**
+- 如附錄的code
 
 
 ## EDA
-- 本次研究 EDA 過程如下：
+- 本次研究的 EDA 過程如下：
 1. **確認資料類型**：檢查數據集中各列的數據類型。
 2. **確認標籤分布**：分析目標標籤的分布情況。
 3. **將非數值資料轉為數值型態**：對類別數據進行編碼。
@@ -36,11 +36,12 @@ presentation link:
 6. **確認數值範圍**：檢查特徵值的範圍。
 7. **去除離群值**：識別並去除離群值。
 8. **計算相關係數與P-value**：檢驗特徵間的相關性和顯著性。
-9. **降維**：應用LDA與PCA技術進行特徵降維
+9. **降維**：應用 LDA 與 PCA 技術進行特徵降維
 
 - EDA 結果：
     
 ## Code
+訓練集、測試集：data folder 中的 lda.data
 ### 模型比較一：羅吉斯回歸
 ```R
 # 載入必要的套件
@@ -274,7 +275,7 @@ best_model$params
 
 ## results
 
-### 模型性能比較
+### 一、模型性能比較
 #### XGBoost 模型
 | 閾值 | 準確率 | 召回率 |
 |:----:|:------:|:------:|
@@ -301,7 +302,7 @@ best_model$params
 - **XGBoost** 和 **Logistic Regression** 模型在閾值為0.4時，顯示較高的準確率和召回率，是此數據集上的最佳設定。
 - 模型目標為達到最高的召回率，並最小化真實下雨但預測沒下雨（FN)的機率。可選擇 XGBoost 或 Logistic Regression，並將閾值設置為 0.3 或 0.4。
 
-### 改進方向
+### 二、改進方向
 **Threshold 調整**
 - 為了提高降雨預測的可靠性並減少用戶未攜帶雨具的風險，我們將預測閾值從 0.5 調整到 0.4，此情況下被 label 成會下雨 的數量會增加（Predicted positive 增加）
 - 這樣可以減少 FN 的發生，增強模型檢測降雨的能力。
@@ -315,7 +316,7 @@ best_model$params
 提供更具體的天氣預報，進一步提高模型的應用價值。
 
 ## References
-### 套件
+### 一、套件
 本項目使用以下 R 語言套件進行數據分析和模型建構：
 1. `readxl`：用於讀取Excel文件。
 2. `corrplot`：生成變量間的相關性圖。
@@ -328,7 +329,7 @@ best_model$params
 9. `caTools`：數據分割、模型評估等工具。
 10. `class`：K 最近鄰算法的函數。
 
-### 參考文章與出版物 
+### 二、參考文章與出版物 
 - 蕭偉泓（2022），《應用卷積神經網路於雲影像降雨預測》，嶺東科技大學資訊管理系碩士班。
 - Google最先進天氣模型MetNet-3，預測結果超越傳統數值預報模型，[詳細資料](https://www.ithome.com.tw/news/136634)。
 - Rain Prediction: ANN，[Kaggle連結](https://www.kaggle.com/code/karnikakapoor/rain-prediction-ann)。

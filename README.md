@@ -26,62 +26,21 @@ presentation link:
 - 
 
 
-### code
-* Analysis steps:
-* EDA:
-*    確認資料類型
-*    確認標籤分布
-*    將非數值資料轉為數值型態
-*    確認偏度
-*    標準化
-*    確認數值範圍
-*    去除離群值
-*    計算相關係數與P-value
-*    降維:LDA與PCA
-* Which method or package do you use?
-*  EDA:
-*   library(readxl)
-*   library(corrplot)
-*   library(ggplot2)
-*   library(dplyr)
-*   library(caret)
-*   library(skimr)
-*   library(moments)
-*   library(MASS)
-*   library(caTools)
-*   library(class)
-* How do you perform training and evaluation?
-  * Cross-validation, or extra separated data
-* What is a null model for comparison?
+## EDA
+- 本次研究 EDA 過程如下：
+1. **確認資料類型**：檢查數據集中各列的數據類型。
+2. **確認標籤分布**：分析目標標籤的分布情況。
+3. **將非數值資料轉為數值型態**：對類別數據進行編碼。
+4. **確認偏度**：分析各數值特徵的偏度。
+5. **標準化**：對數擓特徵進行標準化處理。
+6. **確認數值範圍**：檢查特徵值的範圍。
+7. **去除離群值**：識別並去除離群值。
+8. **計算相關係數與P-value**：檢驗特徵間的相關性和顯著性。
+9. **降維**：應用LDA與PCA技術進行特徵降維
 
-## code
-* Analysis steps:
-*   EDA:
-*    確認資料類型
-*    確認標籤分布
-*    將非數值資料轉為數值型態
-*    確認偏度
-*    標準化
-*    確認數值範圍
-*    去除離群值
-*    計算相關係數與P-value
-*    降維:LDA與PCA
-* Which method or package do you use?
-*  EDA:
-*   library(readxl)
-*   library(corrplot)
-*   library(ggplot2)
-*   library(dplyr)
-*   library(caret)
-*   library(skimr)
-*   library(moments)
-*   library(MASS)
-*   library(caTools)
-*   library(class)
-* How do you perform training and evaluation?
-  * Cross-validation, or extra separated data
-* What is a null model for comparison?
-
+- EDA 結果如下：
+    
+## Code
 ### 模型比較一：羅吉斯回歸
 ```R
 # 載入必要的套件

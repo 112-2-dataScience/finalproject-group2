@@ -18,11 +18,11 @@
 （https://www.canva.com/design/DAGGA6j6UgI/_jtcOQspIFz_kFdtnX5zzw/edit?utm_content=DAGGA6j6UgI&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton）
 
 ## data
-- Source(https://codis.cwa.gov.tw/)
-- Format:CSV
-- Size:1869筆
 - **資料介紹**
 本次研究，我們從 CODiS 氣候資料服務系統抓取 2019/01 至 2024/04 的觀測資料。然而，我們未採用文山測站，而是選擇抓取位於中山區的台北測站資料，因其為署屬有人站，資料與前者相比豐富許多，更能滿足訓練之需求。我們採用前一天的資料如相對溼度、A 型蒸發量、雲量以預測當天的下雨情形，依降水量區分為無雨、小雨、中雨、大雨及暴雨，經遺失值清洗後共計為 1869 筆。
+- Source: (https://codis.cwa.gov.tw/)
+- Format: CSV
+- Size: 1869筆
 - **資料前處理**
 - 如附錄的code
 

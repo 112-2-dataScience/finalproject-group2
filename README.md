@@ -16,7 +16,8 @@ Rscript code/your_script.R --input data/training --output results/performance.ts
 ```
 
 ## Folder organization and its related description
-idea by Noble WS (2009) [A Quick Guide to Organizing Computational Biology Projects.](https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1000424) PLoS Comput Biol 5(7): e1000424.
+![images](DS第二組A1海報初版.png)
+
 
 ### docs
 * Your presentation, 1122_DS-FP_groupID.ppt/pptx/pdf (i.e.,1122_DS-FP_group1.ppt), by **06.13**

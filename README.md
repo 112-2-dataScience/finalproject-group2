@@ -316,6 +316,8 @@ best_model$params
 ```
 
 ### results
+<img width="420" alt="螢幕截圖 2024-06-10 13 19 35" src="https://github.com/112-2-dataScience/finalproject-group2/assets/116884263/3fdf6d5e-2f15-426c-91b6-fac31eb68441">
+
 **Threshold 調整**
 - 為了提高降雨預測的可靠性並減少用戶未攜帶雨具的風險，我們將預測閾值從 0.5 調整到 0.4，此情況下被 label 成會下雨 的數量會增加（Predicted positive 增加）
 - 這樣可以減少 FN 的發生，增強模型檢測降雨的能力。
@@ -325,6 +327,7 @@ best_model$params
 - 提供更豐富的資訊，有助於模型更準確地捕捉降雨的模式和規律。
 **延伸到多分類預測**：無雨、小雨、中雨、大雨及暴雨
 提供更具體的天氣預報，進一步提高模型的應用價值。
+
 
 ## References
 ### 套件

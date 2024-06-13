@@ -14,7 +14,8 @@
 ## Folder organization and its related description
 ### docs
 ![images](DS第二組A1海報初版.png)
-### presentation link: 
+### presentation link:  
+（https://www.canva.com/design/DAGGA6j6UgI/_jtcOQspIFz_kFdtnX5zzw/edit?utm_content=DAGGA6j6UgI&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton）
 
 ## data
 - Source(https://codis.cwa.gov.tw/)
@@ -38,10 +39,9 @@
 8. **計算相關係數與P-value**：檢驗特徵間的相關性和顯著性。
 9. **降維**：應用 LDA 與 PCA 技術進行特徵降維
 
-- EDA 結果：
     
 ## Code
-訓練集、測試集：data folder 中的 lda.data
+訓練集、測試集：data folder 中的 lda_data
 ### 模型比較一：羅吉斯回歸
 ```R
 # 載入必要的套件

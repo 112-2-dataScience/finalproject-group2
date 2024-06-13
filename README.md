@@ -12,7 +12,7 @@
 
 
 ## Folder organization and its related description
-### docs
+### poster
 ![images](DS第二組A1海報初版.png)
 ### presentation link:  
 （https://www.canva.com/design/DAGGA6j6UgI/_jtcOQspIFz_kFdtnX5zzw/edit?utm_content=DAGGA6j6UgI&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton）

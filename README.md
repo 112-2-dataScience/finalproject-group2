@@ -248,6 +248,9 @@ ggplot(results_df, aes(x=tree, y=accuracy, group=factor(try), color=factor(try))
   theme_minimal() +
   theme(plot.title = element_text(hjust = 0.5))
 ```
+#### 隨機森林尋找最佳超參數:
+![plot2](https://github.com/112-2-dataScience/finalproject-group2/assets/116884263/d84295e4-e6ff-4fe0-92e7-256b690fd983)
+
 
 ### 模型比較三：XGBoost
 ```R

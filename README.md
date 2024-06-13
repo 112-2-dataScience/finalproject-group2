@@ -1,5 +1,5 @@
 # [Group02] 大台北區降雨數據分析及多模型預測效能比較
-The goals of this project.
+政大校園氣候潮濕且四季有雨，而氣象預報卻不總是準確，學生們飽受其累。因此，我們構想自行展開進行天氣預測的研究，期望透過比較找出最適合的模型，不僅提升天氣預報的準確性，更為校園生活帶來實質的便利。 
 
 ## Contributors
 |組員|系級|學號|工作分配|
@@ -9,27 +9,22 @@ The goals of this project.
 |黃妍心|國貿大四|109301091|建模|
 |陳昊暄|風管大三|110207402|建模|
 |陳為政|教育大三|110102050|建模|
-## Quick start
-Please provide an example command or a few commands to reproduce your analysis, such as the following R script:
-```R
-Rscript code/your_script.R --input data/training --output results/performance.tsv
-```
+
 
 ## Folder organization and its related description
-![images](DS第二組A1海報初版.png)
+* code
 
 
 ### docs
-* Your presentation, 1122_DS-FP_groupID.ppt/pptx/pdf (i.e.,1122_DS-FP_group1.ppt), by **06.13**
-* Any related document for the project, i.e.,
-  * discussion log
-  * software user guide
+![images](DS第二組A1海報初版.png)
 
 ### data
 * Input
 ** Source:https://codis.cwa.gov.tw/
 ** Format:CSV
 ** Size:1869筆
+本次研究，我們從 CODiS 氣候資料服務系統抓取 2019/01 至 2024/04 的觀測資料。然而，我們未採用文山測站，而是選擇抓取位於中山區的台北測站資料，因其為署屬有人站，資料與前者相比豐富許多，更能滿足訓練之需求。我們採用前一天的資料如相對溼度、A 型蒸發量、雲量以預測當天的下雨情形，依降水量區分為無雨、小雨、中雨、大雨及暴雨，經遺失值清洗後共計為 1869 筆。
+
 
 ### code
 * Analysis steps:
@@ -187,3 +182,7 @@ main()
 *   library(caTools)
 *   library(class)
 * Related publications
+* 蕭偉泓，2022，《應用卷積神經網路於雲影像降雨預測》，嶺東科技大學資訊管理系碩士班
+- Google最先進天氣模型MetNet-3，預測結果超越傳統數值預報模型(https://www.ithome.com.tw/news/136634)
+- Rain Prediction: ANN(https://www.kaggle.com/code/karnikakapoor/rain-prediction-ann)
+- 資料降維 — LDA 線性區別分析(https://medium.com/data-science-navigator/資料降維-lda-線性區別分析-b8adb3df0e01)
